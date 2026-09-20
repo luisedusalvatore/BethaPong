@@ -1,3 +1,5 @@
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 #include <iostream>
 #include <raylib.h>
 using namespace std;
@@ -33,3 +35,4 @@ class Player{
             DrawRectangle(x, y, largura, altura, RAYWHITE);
         }
 };
+#endif

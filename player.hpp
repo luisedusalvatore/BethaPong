@@ -1,10 +1,7 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
-#include <iostream>
 #include <raylib.h>
-using namespace std;
-#define WIDTH 800
-#define HEIGHT 450
+#include "coisas.hpp"
 
 class Player{
     private:

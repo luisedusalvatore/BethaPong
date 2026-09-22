@@ -48,6 +48,12 @@ class Orbe {
             if(verifica_posi() == 3)
             vy *= -1;
         }
+
+        void bate_raquete(int vel, int sinal){
+            vx *= -1;
+            vy += (vel*sinal);
+            ajusta_v();
+        }
         void desenha_orbe(){
             DrawRectangle(x, y, largura, altura, RAYWHITE);
         }
@@ -83,6 +89,14 @@ class Orbe {
                 }
             }
             ajusta_v();
+        }
+        Rectangle getRectangle(){
+            Rectangle retangulo;
+            retangulo.height = altura;
+            retangulo.width = largura;
+            retangulo.x = x;
+            retangulo.y = y;
+            return retangulo;
         }
         
 

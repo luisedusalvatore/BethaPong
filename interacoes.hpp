@@ -38,4 +38,20 @@ void inicio_desenha_botao(){
     DrawRectangle(x_botao, y_botao, largura_botao, altura_botao, RAYWHITE);
     DrawText(texto, x, y, tam, PRETO_CINZA);
 }
+int inicio_verifica_posi_mouse(int x, int y){
+    int tam = 60;
+    int grossura = 30;
+    const char* texto = "INICIAR";
+    int altura = tam + grossura;
+    int largura = MeasureText(texto, tam) + grossura;
+    int x_botao = (WIDTH - largura)/2;
+    int y_botao = (HEIGHT - altura)/2;
+    
+    if(x >= x_botao && x <= x_botao + largura){
+        if(y >= y_botao && y <= y_botao + altura){
+            return 1;
+        }
+    }
+    return 0;
+}
 #endif

@@ -45,12 +45,12 @@ class Jogo{
                 j2->setSentido(-1);
                 j2->moveY();
             }
-            orbe->atualiza_posi();
-            orbe->reseta_posi(random);
+            orbe->atualiza_posi();     
             detectar_colisoes(j1, orbe);
             detectar_colisoes(j2, orbe);
             if(orbe->verifica_posi() == 1) j1->atualiza_placar();
             if(orbe->verifica_posi() == 2) j2->atualiza_placar();
+            orbe->reseta_posi(random);
             BeginDrawing();
             ClearBackground(PRETO_CINZA);
             desenha_placar(j1, j2);

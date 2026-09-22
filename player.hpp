@@ -35,7 +35,7 @@ class Player{
             DrawRectangle(x, y, largura, altura, RAYWHITE);
         }
         void atualiza_placar(){
-            placar ++;
+            placar+=1;
         }
         Rectangle getRectangle(){
             Rectangle retangulo;

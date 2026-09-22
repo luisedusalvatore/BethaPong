@@ -49,7 +49,7 @@ class Jogo{
             detectar_colisoes(j1, orbe);
             detectar_colisoes(j2, orbe);
             if(orbe->verifica_posi() == 1) j1->atualiza_placar();
-            if(orbe->verifica_posi() == 2) j2->atualiza_placar();
+            else if(orbe->verifica_posi() == 2) j2->atualiza_placar();
             orbe->reseta_posi(random);
             BeginDrawing();
             ClearBackground(PRETO_CINZA);

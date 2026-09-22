@@ -4,9 +4,9 @@
 #include "coisas.hpp"
 #include "player.hpp"
 #include "orbe.hpp"
-void detectar_colisoes(Player *player, Orbe *orbe, int sinal){
+void detectar_colisoes(Player *player, Orbe *orbe){
     if(CheckCollisionRecs(player->getRectangle(), orbe->getRectangle())){
-        orbe->bate_raquete(player->getVel(), sinal);
+        orbe->bate_raquete(player->getVel(), player->getSentido());
     }
 }
 void inicio_desenha_texto(){

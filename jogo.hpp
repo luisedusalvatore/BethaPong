@@ -26,8 +26,31 @@ class Jogo{
             
             EndDrawing();
         }
-        void game(Player *j1, Player *j2, Orbe *orbe, estados * estado, int randon){
-            
+        void game(Player *j1, Player *j2, Orbe *orbe, estados * estado, int random){
+            j1->resetaSentido();
+            j2->resetaSentido();
+            if(IsKeyDown(KEY_W)){
+                j1->setSentido(1);
+                j1->moveY();
+            }
+            else if(IsKeyDown(KEY_S)){
+                j1->setSentido(-1);
+                j1->moveY();
+            }
+            if(IsKeyDown(KEY_UP)){
+                j2->setSentido(1);
+                j2->moveY();
+            }
+            else if(IsKeyDown(KEY_DOWN)){
+                j2->setSentido(-1);
+                j2->moveY();
+            }
+            orbe->atualiza_posi();
+            orbe->reseta_posi(random);
+            detectar_colisoes(j1, orbe);
+            detectar_colisoes(j2, orbe);
+            if(orbe->verifica_posi() == 1) j1->atualiza_placar();
+            if(orbe->verifica_posi() == 2) j2->atualiza_placar();
             BeginDrawing();
             ClearBackground(PRETO_CINZA);
             j1->desenha_peça();

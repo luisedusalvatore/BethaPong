@@ -42,6 +42,7 @@ class Orbe {
         void atualiza_posi(){
             x += vx;
             y += vy;
+            bate_parede();
         }
 
         void bate_parede(){

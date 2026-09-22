@@ -6,14 +6,15 @@
 class Player{
     private:
         int placar = 0;
-        int altura = 80;
+        int sentido = 0;
+        int altura = 160;
         int largura = 12;
         int x = 0;
         int y = (HEIGHT - altura)/2;
         int v = 0;
-        int vel = 5;
+        int vel = 10;
         int verifica_altura(int sinal){
-            if(sinal > 0){
+            if(sinal < 0){
                 if((y + altura + vel) > HEIGHT) return 0;
             }
             else{
@@ -27,8 +28,8 @@ class Player{
         void setX(int posi){
             x = posi;
         }
-        void moveY(int sinal){
-            if(verifica_altura(sinal)) y += sinal * vel;
+        void moveY(){
+            if(verifica_altura(sentido)) y -= sentido * vel;
         }
         void desenha_peça(){
             DrawRectangle(x, y, largura, altura, RAYWHITE);
@@ -46,6 +47,15 @@ class Player{
         }
         int getVel(){
             return vel;
+        }
+        void setSentido(int sinal){
+            sentido = sinal;
+        }
+        int getSentido(){
+            return sentido;
+        }
+        void resetaSentido(){
+            sentido = 0;
         }
 };
 #endif

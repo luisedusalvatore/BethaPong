@@ -26,9 +26,13 @@ class Jogo{
             
             EndDrawing();
         }
-        void game(){
+        void game(Player *j1, Player *j2, Orbe *orbe, estados * estado, int randon){
+            
             BeginDrawing();
-            ClearBackground(RAYWHITE);
+            ClearBackground(PRETO_CINZA);
+            j1->desenha_peça();
+            j2->desenha_peça();
+            orbe->desenha_orbe();
             EndDrawing();
         }
         void game_over(){
@@ -37,10 +41,15 @@ class Jogo{
     public:
 
         void roda(){
-            
+            srand(time(0));
             InitWindow(WIDTH, HEIGHT, "Pong");
             InitAudioDevice();
             SetTargetFPS(60);
+            Player j1;
+            Player j2;
+            Orbe orbe;
+            j1.setX(120);
+            j2.setX(WIDTH - 120);
             estados estado = INICIO;
             while(!WindowShouldClose()){
                 switch(estado){
@@ -48,7 +57,7 @@ class Jogo{
                     inicio(&estado);
                     break;
                     case GAME:
-                    game();
+                    game(&j1, &j2, &orbe, &estado, rand()%2);
                     break;
                     case GAME_OVER:
                     game_over();

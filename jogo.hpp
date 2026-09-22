@@ -12,16 +12,24 @@ class Jogo{
                 GAME,
                 GAME_OVER,
         };
-        void inicio(){
-
+        void inicio(estados *estado){
+            if(IsKeyPressed(KEY_SPACE)) *estado = GAME;
+            else if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+                int x = GetMouseX();
+                int y = GetMouseY();
+                if(inicio_verifica_posi_mouse(x, y)) *estado = GAME;
+            }
             BeginDrawing();
+            ClearBackground(PRETO_CINZA);
             inicio_desenha_texto();
             inicio_desenha_botao();
-            ClearBackground(PRETO_CINZA);
+            
             EndDrawing();
         }
         void game(){
-
+            BeginDrawing();
+            ClearBackground(RAYWHITE);
+            EndDrawing();
         }
         void game_over(){
 
@@ -37,7 +45,7 @@ class Jogo{
             while(!WindowShouldClose()){
                 switch(estado){
                     case INICIO:
-                    inicio();
+                    inicio(&estado);
                     break;
                     case GAME:
                     game();

@@ -25,7 +25,7 @@ class Player{
         
     public:
         void setX(int posi){
-            x = (posi - largura)/2;
+            x = posi;
         }
         void moveY(int sinal){
             if(verifica_altura(sinal)) y += sinal * vel;

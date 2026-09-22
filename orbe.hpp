@@ -57,9 +57,8 @@ class Orbe {
         void desenha_orbe(){
             DrawRectangle(x, y, largura, altura, RAYWHITE);
         }
-        void reseta_posi(){
-            srand(time(0));
-            int gerador = rand()%2;
+        void reseta_posi(int gerador){
+            
             if(verifica_posi() == 1){
                 if(gerador == 0){
                    x = ((WIDTH - largura)/2);

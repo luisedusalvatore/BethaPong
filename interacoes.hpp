@@ -41,6 +41,20 @@ void inicio_desenha_botao(){
     DrawText(texto, x, y, tam, PRETO_CINZA);
 }
 void desenha_placar(Player *j1, Player *j2){
+    int dist = 30;
+    int tam = 60;
+    int y = tam + dist;
+    
+    string s1 = to_string(j1->getPlacar());
+    const char* c1 = s1.c_str();
+    string s2 = to_string(j2->getPlacar());
+    const char* c2 = s2.c_str();
+    int largura_1 = MeasureText(c1, tam);
+    int largura_2 = MeasureText(c2, tam);
+    int x1 = ((WIDTH - largura_1)/2) + 3*dist;
+    int x2 = ((WIDTH - largura_2)/ 2) - 3*dist;
+    DrawText(c1, x1, y, tam, RAYWHITE);
+    DrawText(c2, x2, y, tam, RAYWHITE);
 
 }
 int inicio_verifica_posi_mouse(int x, int y){

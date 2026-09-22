@@ -53,6 +53,7 @@ class Jogo{
             if(orbe->verifica_posi() == 2) j2->atualiza_placar();
             BeginDrawing();
             ClearBackground(PRETO_CINZA);
+            desenha_placar(j1, j2);
             j1->desenha_peça();
             j2->desenha_peça();
             orbe->desenha_orbe();

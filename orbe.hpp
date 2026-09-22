@@ -15,7 +15,7 @@ class Orbe {
         double x = (WIDTH - largura)/2;
         double y = (HEIGHT - altura)/2;
 
-        double v_max = 5;
+        double v_max = 10;
         double vx = 3;
         double vy = 4;
 
@@ -53,6 +53,17 @@ class Orbe {
         void bate_raquete(int vel, int sinal){
             vx *= -1;
             vy += (vel*sinal);
+            if (abs(vx) < 5){
+                if(vx < 0){
+                    vx = -5;
+                }
+                else if(vx > 0){
+                    vx = 5;
+                }
+                else{
+                    vx = 10;
+                }
+            }
             ajusta_v();
         }
         void desenha_orbe(){

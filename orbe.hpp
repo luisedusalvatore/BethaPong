@@ -15,7 +15,7 @@ class Orbe {
         double x = (WIDTH - largura)/2;
         double y = (HEIGHT - altura)/2;
 
-        double v_max = 10;
+        double v_max = 15;
         double vx = 3;
         double vy = 4;
 

@@ -57,5 +57,8 @@ class Player{
         void resetaSentido(){
             sentido = 0;
         }
+        int getPlacar(){
+            return placar;
+        }
 };
 #endif

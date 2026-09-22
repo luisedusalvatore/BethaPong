@@ -1,9 +1,11 @@
 #ifndef INTERACOES_HPP
 #define INTERACOES_HPP
 #include <raylib.h>
+#include <iostream>
 #include "coisas.hpp"
 #include "player.hpp"
 #include "orbe.hpp"
+using namespace std;
 void detectar_colisoes(Player *player, Orbe *orbe){
     if(CheckCollisionRecs(player->getRectangle(), orbe->getRectangle())){
         orbe->bate_raquete(player->getVel(), player->getSentido());
@@ -37,6 +39,9 @@ void inicio_desenha_botao(){
     int y_botao = (HEIGHT - altura_botao)/2;
     DrawRectangle(x_botao, y_botao, largura_botao, altura_botao, RAYWHITE);
     DrawText(texto, x, y, tam, PRETO_CINZA);
+}
+void desenha_placar(Player *j1, Player *j2){
+
 }
 int inicio_verifica_posi_mouse(int x, int y){
     int tam = 60;

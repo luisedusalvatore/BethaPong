@@ -5,7 +5,7 @@
 
 class Player{
     private:
-        int placar;
+        int placar = 0;
         int altura = 80;
         int largura = 12;
         int x = 0;
@@ -32,6 +32,9 @@ class Player{
         }
         void desenha_peça(){
             DrawRectangle(x, y, largura, altura, RAYWHITE);
+        }
+        void atualiza_placar(){
+            placar ++;
         }
         Rectangle getRectangle(){
             Rectangle retangulo;

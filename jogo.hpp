@@ -54,6 +54,7 @@ class Jogo{
             BeginDrawing();
             ClearBackground(PRETO_CINZA);
             desenha_placar(j1, j2);
+            desenha_marcacao();
             j1->desenha_peça();
             j2->desenha_peça();
             orbe->desenha_orbe();

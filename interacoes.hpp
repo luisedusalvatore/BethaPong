@@ -73,4 +73,11 @@ int inicio_verifica_posi_mouse(int x, int y){
     }
     return 0;
 }
+
+void desenha_marcacao(){
+    int grossura = 2;
+    int y = 0;
+    int x =(WIDTH-grossura)/2;
+    DrawRectangle(x, y, grossura, HEIGHT, RAYWHITE);
+}
 #endif

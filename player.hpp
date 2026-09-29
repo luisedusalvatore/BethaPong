@@ -60,5 +60,14 @@ class Player{
         int getPlacar(){
             return placar;
         }
+        int verificaVencedor(){
+            if(placar >= 20) return 1;
+            return 0;
+        }
+        void reseta(){
+            int x = 0;
+            int y = (HEIGHT - altura)/2;
+            int v = 0;
+        }
 };
 #endif

@@ -109,6 +109,13 @@ class Orbe {
             retangulo.y = y;
             return retangulo;
         }
+        void reseta(){
+            double x = (WIDTH - largura)/2;
+            double y = (HEIGHT - altura)/2;
+
+            double vx = 3;
+            double vy = 4;
+        }
         
 
 };

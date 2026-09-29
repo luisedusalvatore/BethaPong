@@ -26,7 +26,7 @@ class Jogo{
             
             EndDrawing();
         }
-        void game(Player *j1, Player *j2, Orbe *orbe, estados * estado, int random){
+        void game(Player *j1, Player *j2, Orbe *orbe, estados *estado, string *vencedor, int random){
             j1->resetaSentido();
             j2->resetaSentido();
             if(IsKeyDown(KEY_W)){
@@ -51,6 +51,14 @@ class Jogo{
             if(orbe->verifica_posi() == 1) j1->atualiza_placar();
             else if(orbe->verifica_posi() == 2) j2->atualiza_placar();
             orbe->reseta_posi(random);
+            if(j1->verificaVencedor()){
+                *vencedor = "J1";
+                *estado = GAME_OVER;
+            } 
+            else if(j2->verificaVencedor()){
+                *vencedor = "J2";
+                *estado = GAME_OVER;
+            }
             BeginDrawing();
             ClearBackground(PRETO_CINZA);
             desenha_placar(j1, j2);
@@ -60,8 +68,11 @@ class Jogo{
             orbe->desenha_orbe();
             EndDrawing();
         }
-        void game_over(){
-
+        void game_over(string *vencedor){
+            BeginDrawing();
+            ClearBackground(PRETO_CINZA);
+            fim_desenha_mensagem(vencedor);
+            EndDrawing();
         }
     public:
 
@@ -73,6 +84,7 @@ class Jogo{
             Player j1;
             Player j2;
             Orbe orbe;
+            string vencedor;
             j1.setX(120);
             j2.setX(WIDTH - 120);
             estados estado = INICIO;
@@ -82,10 +94,10 @@ class Jogo{
                     inicio(&estado);
                     break;
                     case GAME:
-                    game(&j1, &j2, &orbe, &estado, rand()%2);
+                    game(&j1, &j2, &orbe, &estado, &vencedor, rand()%2);
                     break;
                     case GAME_OVER:
-                    game_over();
+                    game_over(&vencedor);
                     break;
                 }
             }

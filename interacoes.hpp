@@ -80,4 +80,21 @@ void desenha_marcacao(){
     int x =(WIDTH-grossura)/2;
     DrawRectangle(x, y, grossura, HEIGHT, RAYWHITE);
 }
+
+void fim_desenha_mensagem(string *vencedor){
+    int tam = 60;
+    string msg = "O jogador " + *vencedor + " venceu!";
+    const char* v = msg.c_str();
+    int x = (WIDTH - MeasureText(v, tam))/2;
+    int y = (HEIGHT)/4;
+    DrawText(v, x, y, tam, RAYWHITE);
+}
+
+void fim_desenha_botao_reset(){
+    const char* msg = "Jogar novamente";
+    
+}
+void fim_verifica_botao_reset(){
+
+}
 #endif

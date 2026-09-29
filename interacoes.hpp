@@ -51,8 +51,8 @@ void desenha_placar(Player *j1, Player *j2){
     const char* c2 = s2.c_str();
     int largura_1 = MeasureText(c1, tam);
     int largura_2 = MeasureText(c2, tam);
-    int x1 = ((WIDTH - largura_1)/2) + 3*dist;
-    int x2 = ((WIDTH - largura_2)/ 2) - 3*dist;
+    int x1 = ((WIDTH - largura_1)/2) - 3*dist;
+    int x2 = ((WIDTH - largura_2)/ 2) + 3*dist;
     DrawText(c1, x1, y, tam, RAYWHITE);
     DrawText(c2, x2, y, tam, RAYWHITE);
 
@@ -105,7 +105,20 @@ void fim_desenha_botao_reset(){
     DrawText(msg, x_texto, y_texto, tam, PRETO_CINZA);
 }
 int fim_verifica_posi_mouse(int x, int y){
-    
+    int tam = 60;
+    const char* msg = "Jogar novamente";
+    int largura_texto = MeasureText(msg, tam);
+    int altura_texto = tam;
+    int x_texto = (WIDTH - largura_texto)/2;
+    int y_texto = (HEIGHT - altura_texto)/2;
+    int largura_botao = (largura_texto + tam);
+    int altura_botao = (altura_texto + tam);
+    int x_botao = (WIDTH - largura_botao)/2;
+    int y_botao = (HEIGHT - altura_botao)/2;
+    if(x >= x_botao && x<= (x_botao+largura_botao)){
+        if(y >= y_botao && y <= (y_botao+altura_botao)) return 1;
+    }
+    return 0;
 }
 void fim_verifica_botao_reset(){
 

@@ -48,8 +48,8 @@ class Jogo{
             orbe->atualiza_posi();     
             detectar_colisoes(j1, orbe);
             detectar_colisoes(j2, orbe);
-            if(orbe->verifica_posi() == 1) j1->atualiza_placar();
-            else if(orbe->verifica_posi() == 2) j2->atualiza_placar();
+            if(orbe->verifica_posi() == 1) j2->atualiza_placar();
+            else if(orbe->verifica_posi() == 2) j1->atualiza_placar();
             orbe->reseta_posi(random);
             if(j1->verificaVencedor()){
                 *vencedor = "J1";
@@ -68,7 +68,18 @@ class Jogo{
             orbe->desenha_orbe();
             EndDrawing();
         }
-        void game_over(Player *j1, Player *j2, Orbe *orbe, string *vencedor){
+        void game_over(Player *j1, Player *j2, Orbe *orbe, estados *estado, string *vencedor){
+            
+            if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+                int x = GetMouseX();
+                int y = GetMouseY();
+                if(fim_verifica_posi_mouse(x, y)){
+                    j1->reseta();
+                    j2->reseta();
+                    orbe->reseta();
+                    *estado = GAME;
+                }
+            }
             BeginDrawing();
             ClearBackground(PRETO_CINZA);
             fim_desenha_mensagem(vencedor);
@@ -98,7 +109,7 @@ class Jogo{
                     game(&j1, &j2, &orbe, &estado, &vencedor, rand()%2);
                     break;
                     case GAME_OVER:
-                    game_over(&j1, &j2, &orbe, &vencedor);
+                    game_over(&j1, &j2, &orbe, &estado, &vencedor);
                     break;
                 }
             }

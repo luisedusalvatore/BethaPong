@@ -65,9 +65,11 @@ class Player{
             return 0;
         }
         void reseta(){
-            int x = 0;
-            int y = (HEIGHT - altura)/2;
-            int v = 0;
+
+            y = (HEIGHT - altura)/2;
+            v = 0;
+            placar = 0;
+            sentido = 0;
         }
 };
 #endif

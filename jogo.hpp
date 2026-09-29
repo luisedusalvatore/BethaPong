@@ -6,6 +6,7 @@
 #include "orbe.hpp"
 #include "interacoes.hpp"
 class Jogo{
+    
     private:
         enum estados{
                 INICIO,
@@ -93,6 +94,7 @@ class Jogo{
             InitWindow(WIDTH, HEIGHT, "Pong");
             InitAudioDevice();
             SetTargetFPS(60);
+            Music DanubioAzul = LoadMusicStream("assets/blue_danube_8bit.mp3");
             Player j1;
             Player j2;
             Orbe orbe;
@@ -103,12 +105,24 @@ class Jogo{
             while(!WindowShouldClose()){
                 switch(estado){
                     case INICIO:
+                    if(!IsMusicStreamPlaying(DanubioAzul)){
+                        PlayMusicStream(DanubioAzul);
+                    }
+                    UpdateMusicStream(DanubioAzul);
                     inicio(&estado);
                     break;
                     case GAME:
+                    if(IsMusicStreamPlaying(DanubioAzul)){
+                        StopMusicStream(DanubioAzul);
+                    }
                     game(&j1, &j2, &orbe, &estado, &vencedor, rand()%2);
                     break;
                     case GAME_OVER:
+                    if(!IsMusicStreamPlaying(DanubioAzul)){
+                        PlayMusicStream(DanubioAzul);
+                    }
+                    UpdateMusicStream(DanubioAzul);
+                    inicio(&estado);
                     game_over(&j1, &j2, &orbe, &estado, &vencedor);
                     break;
                 }

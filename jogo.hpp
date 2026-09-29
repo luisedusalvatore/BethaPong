@@ -68,10 +68,11 @@ class Jogo{
             orbe->desenha_orbe();
             EndDrawing();
         }
-        void game_over(string *vencedor){
+        void game_over(Player *j1, Player *j2, Orbe *orbe, string *vencedor){
             BeginDrawing();
             ClearBackground(PRETO_CINZA);
             fim_desenha_mensagem(vencedor);
+            fim_desenha_botao_reset();
             EndDrawing();
         }
     public:
@@ -97,7 +98,7 @@ class Jogo{
                     game(&j1, &j2, &orbe, &estado, &vencedor, rand()%2);
                     break;
                     case GAME_OVER:
-                    game_over(&vencedor);
+                    game_over(&j1, &j2, &orbe, &vencedor);
                     break;
                 }
             }

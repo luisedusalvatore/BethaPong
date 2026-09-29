@@ -91,7 +91,20 @@ void fim_desenha_mensagem(string *vencedor){
 }
 
 void fim_desenha_botao_reset(){
+    int tam = 60;
     const char* msg = "Jogar novamente";
+    int largura_texto = MeasureText(msg, tam);
+    int altura_texto = tam;
+    int x_texto = (WIDTH - largura_texto)/2;
+    int y_texto = (HEIGHT - altura_texto)/2;
+    int largura_botao = (largura_texto + tam);
+    int altura_botao = (altura_texto + tam);
+    int x_botao = (WIDTH - largura_botao)/2;
+    int y_botao = (HEIGHT - altura_botao)/2;
+    DrawRectangle(x_botao, y_botao, largura_botao, altura_botao, RAYWHITE);
+    DrawText(msg, x_texto, y_texto, tam, PRETO_CINZA);
+}
+int fim_verifica_posi_mouse(int x, int y){
     
 }
 void fim_verifica_botao_reset(){

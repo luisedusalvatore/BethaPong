@@ -6,8 +6,9 @@
 #include "player.hpp"
 #include "orbe.hpp"
 using namespace std;
-void detectar_colisoes(Player *player, Orbe *orbe){
+void detectar_colisoes(Player *player, Orbe *orbe, Sound som){
     if(CheckCollisionRecs(player->getRectangle(), orbe->getRectangle())){
+        PlaySound(som);
         orbe->bate_raquete(player->getVel(), player->getSentido());
     }
 }

@@ -39,15 +39,18 @@ class Orbe {
             
         }
 
-        void atualiza_posi(){
+        void atualiza_posi(Sound som){
             x += vx;
             y += vy;
-            bate_parede();
+            bate_parede(som);
         }
 
-        void bate_parede(){
-            if(verifica_posi() == 3)
-            vy *= -1;
+        void bate_parede(Sound som){
+            if(verifica_posi() == 3){
+                vy *= -1;
+                PlaySound(som);
+            }
+            
         }
 
         void bate_raquete(int vel, int sinal){

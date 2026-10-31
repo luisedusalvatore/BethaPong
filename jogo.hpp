@@ -27,7 +27,7 @@ class Jogo{
             
             EndDrawing();
         }
-        void game(Player *j1, Player *j2, Orbe *orbe, estados *estado, string *vencedor, int random){
+        void game(Player *j1, Player *j2, Orbe *orbe, estados *estado, string *vencedor, int random, Sound raquete, Sound parede){
             j1->resetaSentido();
             j2->resetaSentido();
             if(IsKeyDown(KEY_W)){
@@ -46,9 +46,9 @@ class Jogo{
                 j2->setSentido(-1);
                 j2->moveY();
             }
-            orbe->atualiza_posi();     
-            detectar_colisoes(j1, orbe);
-            detectar_colisoes(j2, orbe);
+            orbe->atualiza_posi(parede);     
+            detectar_colisoes(j1, orbe, raquete);
+            detectar_colisoes(j2, orbe, raquete);
             if(orbe->verifica_posi() == 1) j2->atualiza_placar();
             else if(orbe->verifica_posi() == 2) j1->atualiza_placar();
             orbe->reseta_posi(random);
@@ -95,6 +95,8 @@ class Jogo{
             InitAudioDevice();
             SetTargetFPS(60);
             Music DanubioAzul = LoadMusicStream("assets/blue_danube_8bit.mp3");
+            Sound raquete = LoadSound("assets/raquete.mp3");
+            Sound parede = LoadSound("assets/parede.mp3");
             Player j1;
             Player j2;
             Orbe orbe;
@@ -115,7 +117,7 @@ class Jogo{
                     if(IsMusicStreamPlaying(DanubioAzul)){
                         StopMusicStream(DanubioAzul);
                     }
-                    game(&j1, &j2, &orbe, &estado, &vencedor, rand()%2);
+                    game(&j1, &j2, &orbe, &estado, &vencedor, rand()%2, raquete, parede);
                     break;
                     case GAME_OVER:
                     if(!IsMusicStreamPlaying(DanubioAzul)){

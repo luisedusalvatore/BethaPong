@@ -122,7 +122,6 @@ class Jogo{
                         PlayMusicStream(DanubioAzul);
                     }
                     UpdateMusicStream(DanubioAzul);
-                    inicio(&estado);
                     game_over(&j1, &j2, &orbe, &estado, &vencedor);
                     break;
                 }
